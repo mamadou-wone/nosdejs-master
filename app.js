@@ -1,12 +1,17 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-const server = http.createServer((req, res) => {
-    const url = req.url;
-    if (url == '/home') {
-
-    }
-    // console.log(req);
-    // process.exit();
+app.use('/amir', (req, res, next) => {
+    console.log('Amir Boss...');
+    res.send('Hello Amir!');
 });
 
-server.listen(3000, "localhost");
+app.use('/', (req, res, next) => {
+    console.log('Incoming request...');
+    res.send('Hello World!');
+});
+
+
+
+
+app.listen(3000);
